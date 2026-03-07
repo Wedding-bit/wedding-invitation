@@ -1,5 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { supabase } from '../lib/supabase';
+
+interface RSVP {
+    id: number;
+    name: string;
+    attendance: string;
+    message: string;
+    created_at: string;
+}
 
 export const RSVP: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -8,14 +17,58 @@ export const RSVP: React.FC = () => {
         message: ''
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [rsvps, setRsvps] = useState<RSVP[]>([]);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    useEffect(() => {
+        fetchRsvps();
+
+        // Subscribe to real-time changes
+        const subscription = supabase
+            .channel('public:rsvps')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'rsvps' }, () => {
+                fetchRsvps(); // Refresh on any change
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(subscription);
+        };
+    }, []);
+
+    const fetchRsvps = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('rsvps')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            if (data) setRsvps(data);
+        } catch (error) {
+            console.error('Error fetching RSVPs:', error);
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Simulate API call
-        setTimeout(() => {
+        setIsSubmitting(true);
+
+        try {
+            const { error } = await supabase
+                .from('rsvps')
+                .insert([formData]);
+
+            if (error) throw error;
+
             setIsSubmitted(true);
             setFormData({ name: '', attendance: 'hadir', message: '' });
-        }, 800);
+        } catch (error) {
+            console.error('Error submitting RSVP:', error);
+            alert('Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -109,14 +162,65 @@ export const RSVP: React.FC = () => {
 
                         <button
                             type="submit"
-                            className="w-full group relative inline-flex items-center justify-center gap-2 bg-primary/90 hover:bg-primary text-white px-8 py-4 rounded-xl text-sm font-bold tracking-wide transition-all shadow-lg hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98] mt-2"
+                            disabled={isSubmitting}
+                            className={`w-full group relative inline-flex items-center justify-center gap-2 bg-primary/90 hover:bg-primary text-white px-8 py-4 rounded-xl text-sm font-bold tracking-wide transition-all shadow-lg hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98] mt-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
-                            <span className="material-symbols-outlined text-lg group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">send</span>
-                            <span>Kirim Konfirmasi</span>
+                            <span className={`material-symbols-outlined text-lg ${isSubmitting ? 'animate-spin' : 'group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform'}`}>
+                                {isSubmitting ? 'progress_activity' : 'send'}
+                            </span>
+                            <span>{isSubmitting ? 'Mengirim...' : 'Kirim Konfirmasi'}</span>
                         </button>
                     </form>
                 )}
+
+                {/* Live Guestbook Section */}
+                {rsvps.length > 0 && (
+                    <div className="mt-12 bg-white dark:bg-slate-900 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 overflow-hidden">
+                        <div className="bg-slate-50 dark:bg-slate-800/50 p-6 border-b border-slate-100 dark:border-slate-700">
+                            <h3 className="font-serif font-bold text-center text-xl text-navy-custom dark:text-white flex items-center justify-center gap-2">
+                                <span className="material-symbols-outlined text-primary">diversity_1</span>
+                                Buku Tamu ({rsvps.length})
+                            </h3>
+                        </div>
+                        <div className="divide-y divide-slate-100 dark:divide-slate-800 max-h-[500px] overflow-y-auto custom-scrollbar">
+                            {rsvps.map((rsvp) => (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    key={rsvp.id}
+                                    className="p-6 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30"
+                                >
+                                    <div className="flex items-start gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                            <span className="font-serif font-bold text-primary text-lg">
+                                                {rsvp.name.charAt(0).toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <div className="flex items-baseline gap-2 mb-1">
+                                                <h4 className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+                                                    {rsvp.name}
+                                                </h4>
+                                                <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full ${rsvp.attendance === 'hadir' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' :
+                                                        rsvp.attendance === 'tidak_hadir' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' :
+                                                            'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                                                    }`}>
+                                                    {rsvp.attendance.replace('_', ' ')}
+                                                </span>
+                                            </div>
+                                            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mt-2 italic whitespace-pre-line">
+                                                "{rsvp.message}"
+                                            </p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
             </motion.div>
         </section>
     );
 };
+
