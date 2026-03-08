@@ -86,7 +86,17 @@ export const EventDetails: React.FC = () => {
                             <span className="material-symbols-outlined text-primary">event</span>
                         </div>
                         <h3 className="font-serif italic text-sm text-slate-500 dark:text-slate-400 mb-1">Resepsi Pernikahan</h3>
-                        <h4 className="font-serif text-2xl font-bold text-navy-custom dark:text-white">Minggu, 29 Maret 2026</h4>
+                        <h4 className="font-serif text-2xl font-bold text-navy-custom dark:text-white mb-4">Minggu, 29 Maret 2026</h4>
+
+                        <a
+                            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Danang+%26+Eva&dates=20260329T020000Z/20260329T060000Z&details=Merupakan+suatu+kehormatan+dan+kebahagiaan+bagi+kami+apabila+Bapak/Ibu/Saudara/i+berkenan+hadir.&location=Kaliori,+Rembang"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 text-primary dark:text-primary hover:bg-primary/10 transition-colors text-xs font-bold uppercase tracking-wider mx-auto"
+                        >
+                            <span className="material-symbols-outlined text-sm">calendar_add_on</span>
+                            Simpan ke Kalender
+                        </a>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 relative">
