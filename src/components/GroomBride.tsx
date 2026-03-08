@@ -1,80 +1,117 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+interface ProfileCardProps {
+    name: string;
+    role: string;
+    parents: string;
+    photo: string;
+    delay: number;
+    direction: 'left' | 'right';
+}
+
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction }) => (
+    <motion.div
+        initial={{ opacity: 0, x: direction === 'left' ? -40 : 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, delay }}
+        className="text-center relative z-10"
+    >
+        {/* Photo Frame */}
+        <div className="relative w-36 h-36 mx-auto mb-6">
+            {/* Decorative ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_20s_linear_infinite]" />
+            {/* Inner ring */}
+            <div className="absolute inset-1.5 rounded-full border border-primary/20" />
+            {/* Photo */}
+            <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10">
+                <div
+                    className="w-full h-full bg-cover bg-top transition-transform duration-500 hover:scale-110"
+                    style={{ backgroundImage: `url('${photo}')` }}
+                />
+            </div>
+        </div>
+
+        {/* Name */}
+        <h3 className="font-serif text-2xl font-bold text-navy-custom dark:text-white mb-2 leading-tight">
+            {name}
+        </h3>
+
+        {/* Role badge */}
+        <div className="inline-flex items-center gap-1.5 bg-primary/10 dark:bg-primary/20 rounded-full px-4 py-1.5 mb-4">
+            <span className="material-symbols-outlined text-primary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>
+                {direction === 'left' ? 'man' : 'woman'}
+            </span>
+            <span className="text-[10px] text-primary font-bold tracking-widest uppercase">{role}</span>
+        </div>
+
+        {/* Parents */}
+        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+            {parents}
+        </p>
+    </motion.div>
+);
+
 export const GroomBride: React.FC = () => {
     return (
-        <section className="px-8 py-16 bg-white dark:bg-slate-900 overflow-hidden relative">
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 border-[1px] border-primary/10 rounded-full" />
-            <div className="absolute top-10 right-10 -mr-20 -mt-20 w-64 h-64 border-[1px] border-primary/5 rounded-full" />
+        <section className="px-6 py-16 bg-gradient-to-b from-white via-pastel-blue/10 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden relative">
+            {/* Decorative background circles */}
+            <div className="absolute top-10 right-0 -mr-16 w-48 h-48 rounded-full bg-primary/5 blur-2xl" />
+            <div className="absolute bottom-10 left-0 -ml-16 w-48 h-48 rounded-full bg-primary/5 blur-2xl" />
 
+            {/* Header */}
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.8 }}
-                className="text-center mb-16"
+                className="text-center mb-12"
             >
-                <span className="font-serif italic text-slate-500 text-sm">Dengan Memohon Rahmat Allah SWT</span>
-                <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/30 to-transparent mx-auto mt-4" />
+                <span className="material-symbols-outlined text-primary text-3xl mb-3 opacity-50">diversity_1</span>
+                <h2 className="font-script text-5xl text-primary mb-3">Mempelai</h2>
+                <p className="font-serif italic text-sm text-slate-500 dark:text-slate-400">
+                    Dengan Memohon Rahmat Allah SWT
+                </p>
+                <div className="h-px w-20 bg-gradient-to-r from-transparent via-primary/30 to-transparent mx-auto mt-4" />
             </motion.div>
 
-            <div className="space-y-16">
+            {/* Cards Container */}
+            <div className="max-w-sm mx-auto space-y-10">
                 {/* Groom */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center group relative z-10"
-                >
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/4x6danang.jpeg')", backgroundPosition: "top center" }} />
-                    </div>
-                    <h3 className="font-serif text-3xl font-bold text-navy-custom dark:text-white mb-2 group-hover:text-primary transition-colors">
-                        Nariswara Danang Prasetya Aji
-                    </h3>
-                    <p className="text-xs text-primary font-semibold tracking-widest uppercase mb-4">Putra Pertama dari</p>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-6">
-                        Bapak Sutrisno Budiyanto<br />& Ibu Suwantini
-                    </p>
-                    <div className="mt-6 flex justify-center">
-                        <span className="inline-block h-1 w-12 rounded-full bg-gradient-to-r from-transparent via-gold-accent/50 to-transparent"></span>
-                    </div>
-                </motion.div>
+                <ProfileCard
+                    name="Nariswara Danang Prasetya Aji"
+                    role="Putra Pertama dari"
+                    parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
+                    photo="/4x6danang.jpeg"
+                    delay={0}
+                    direction="left"
+                />
 
+                {/* Elegant Ampersand Divider */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="flex justify-center italic font-script text-5xl text-primary/40 relative"
+                    transition={{ duration: 0.6 }}
+                    className="flex items-center justify-center gap-4 py-2"
                 >
-                    <span className="relative z-10 bg-white dark:bg-slate-900 px-4">&</span>
-                    <div className="absolute top-1/2 left-1/4 right-1/4 h-px bg-primary/20 -z-0 transform -translate-y-1/2" />
+                    <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-transparent to-gold-accent/40" />
+                    <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center border border-primary/20">
+                        <span className="font-script text-3xl text-primary">&</span>
+                    </div>
+                    <div className="h-px flex-1 max-w-[60px] bg-gradient-to-l from-transparent to-gold-accent/40" />
                 </motion.div>
 
                 {/* Bride */}
-                <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center group relative z-10"
-                >
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/4x6eva.jpeg')", backgroundPosition: "top center" }} />
-                    </div>
-                    <h3 className="font-serif text-3xl font-bold text-navy-custom dark:text-white mb-2 group-hover:text-primary transition-colors">
-                        Eva Kurnia Damayanti
-                    </h3>
-                    <p className="text-xs text-primary font-semibold tracking-widest uppercase mb-4">Putri Pertama dari</p>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-6">
-                        Bapak Walurat<br />& Ibu Sri Wahyuni
-                    </p>
-                    <div className="mt-6 flex justify-center">
-                        <span className="inline-block h-1 w-12 rounded-full bg-gradient-to-r from-transparent via-gold-accent/50 to-transparent"></span>
-                    </div>
-                </motion.div>
+                <ProfileCard
+                    name="Eva Kurnia Damayanti"
+                    role="Putri Pertama dari"
+                    parents="Bapak Walurat & Ibu Sri Wahyuni"
+                    photo="/4x6eva.jpeg"
+                    delay={0.1}
+                    direction="right"
+                />
             </div>
         </section>
     );
