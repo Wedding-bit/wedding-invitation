@@ -33,7 +33,7 @@ export const Cover: React.FC<CoverProps> = ({ isOpen, onOpen }) => {
                     >
                         <span className="font-serif italic tracking-[0.3em] text-sm uppercase text-slate-300">The Wedding Of</span>
 
-                        <h1 className="font-script text-6xl md:text-7xl mt-6 mb-8 text-primary drop-shadow-lg text-gradient-gold">
+                        <h1 className="font-script text-6xl md:text-7xl mt-6 mb-8 pb-4 leading-relaxed text-primary drop-shadow-lg text-gradient-gold">
                             Danang & Eva
                         </h1>
 
