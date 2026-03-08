@@ -28,7 +28,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, d
             {/* Photo */}
             <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10">
                 <div
-                    className="w-full h-full bg-cover transition-transform duration-500 hover:scale-110"
+                    className="w-full h-full bg-cover transition-transform duration-500 hover:scale-110 grayscale"
                     style={{ backgroundImage: `url('${photo}')`, backgroundPosition: bgPosition }}
                 />
             </div>
