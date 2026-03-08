@@ -110,14 +110,34 @@ export const EventDetails: React.FC = () => {
                         </p>
                     </div>
 
+                    {/* Mini Map Preview */}
+                    <div className="mt-6 relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8!2d111.3414!3d-6.7214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDMnMTcuMCJTIDExMcKwMjAnMjkuMCJF!5e0!3m2!1sid!2sid!4v1700000000000"
+                            width="100%"
+                            height="150"
+                            style={{ border: 0 }}
+                            allowFullScreen={false}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="grayscale-[30%] hover:grayscale-0 transition-all duration-500"
+                            title="Lokasi Pernikahan"
+                        />
+                        {/* Pin Badge */}
+                        <div className="absolute top-3 left-3 bg-white dark:bg-slate-800 rounded-full px-3 py-1.5 shadow-md flex items-center gap-1.5">
+                            <span className="material-symbols-outlined text-red-500 text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>location_on</span>
+                            <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Lokasi Acara</span>
+                        </div>
+                    </div>
+
                     <a
                         href="https://maps.google.com/?q=-6.7214,111.3414"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-full gap-2 bg-slate-900 dark:bg-primary hover:bg-slate-800 hover:dark:bg-primary/90 text-white px-6 py-4 rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98]"
+                        className="inline-flex items-center justify-center w-full gap-2 bg-slate-900 dark:bg-primary hover:bg-slate-800 hover:dark:bg-primary/90 text-white px-6 py-4 rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] mt-3"
                     >
-                        <span className="material-symbols-outlined text-lg">map</span>
-                        <span>Buka Peta Lokasi</span>
+                        <span className="material-symbols-outlined text-lg">directions</span>
+                        <span>Petunjuk Arah ke Lokasi</span>
                     </a>
                 </div>
             </motion.div>

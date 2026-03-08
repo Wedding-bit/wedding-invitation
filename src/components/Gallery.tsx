@@ -2,10 +2,48 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const photos = [
-    { src: '/master-photo.jpg', alt: 'Our precious moment', span: 'col-span-2 row-span-2' },
-    { src: '/master-photo.jpg', alt: 'Our precious moment', span: '' },
-    { src: '/master-photo.jpg', alt: 'Our precious moment', span: '' },
-    { src: '/master-photo.jpg', alt: 'Our precious moment', span: 'col-span-2' },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Momen kebersamaan kami',
+        span: 'col-span-2 row-span-2',
+        position: 'center top',
+        filter: 'none',
+    },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Senyum bahagia',
+        span: '',
+        position: 'right center',
+        filter: 'sepia(20%) saturate(1.2)',
+    },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Kenangan indah',
+        span: '',
+        position: 'left top',
+        filter: 'brightness(1.1) contrast(1.05)',
+    },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Bersama selamanya',
+        span: 'col-span-2',
+        position: 'center 30%',
+        filter: 'saturate(0.8) brightness(0.95)',
+    },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Cinta abadi',
+        span: '',
+        position: 'center bottom',
+        filter: 'hue-rotate(10deg) saturate(1.1)',
+    },
+    {
+        src: '/master-photo.jpg',
+        alt: 'Kebahagiaan kita',
+        span: 'col-span-2 row-span-2',
+        position: '40% center',
+        filter: 'sepia(10%) brightness(1.05)',
+    },
 ];
 
 export const Gallery: React.FC = () => {
@@ -26,7 +64,7 @@ export const Gallery: React.FC = () => {
             </motion.div>
 
             {/* Masonry Grid */}
-            <div className="grid grid-cols-3 gap-2 max-w-lg mx-auto auto-rows-[120px] md:auto-rows-[160px]">
+            <div className="grid grid-cols-3 gap-2 max-w-lg mx-auto auto-rows-[110px] md:auto-rows-[140px]">
                 {photos.map((photo, index) => (
                     <motion.div
                         key={index}
@@ -38,8 +76,12 @@ export const Gallery: React.FC = () => {
                         onClick={() => setLightboxIndex(index)}
                     >
                         <div
-                            className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                            style={{ backgroundImage: `url(${photo.src})` }}
+                            className="w-full h-full bg-cover transition-transform duration-700 group-hover:scale-110"
+                            style={{
+                                backgroundImage: `url(${photo.src})`,
+                                backgroundPosition: photo.position,
+                                filter: photo.filter,
+                            }}
                             aria-label={photo.alt}
                         />
                         {/* Hover overlay */}
@@ -68,13 +110,41 @@ export const Gallery: React.FC = () => {
                             src={photos[lightboxIndex].src}
                             alt={photos[lightboxIndex].alt}
                             className="max-w-full max-h-[80vh] rounded-2xl shadow-2xl object-contain"
+                            style={{
+                                objectPosition: photos[lightboxIndex].position,
+                                filter: photos[lightboxIndex].filter,
+                            }}
                         />
+
+                        {/* Navigation arrows */}
+                        {lightboxIndex > 0 && (
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
+                                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                            >
+                                <span className="material-symbols-outlined">chevron_left</span>
+                            </button>
+                        )}
+                        {lightboxIndex < photos.length - 1 && (
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                            >
+                                <span className="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        )}
+
                         <button
                             onClick={() => setLightboxIndex(null)}
                             className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                         >
                             <span className="material-symbols-outlined">close</span>
                         </button>
+
+                        {/* Photo counter */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-white text-xs font-bold tracking-wider">
+                            {lightboxIndex + 1} / {photos.length}
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
