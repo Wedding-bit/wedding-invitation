@@ -82,7 +82,7 @@ export const GroomBride: React.FC = () => {
                 {/* Groom */}
                 <ProfileCard
                     name="Nariswara Danang Prasetya Aji"
-                    role="Putra Pertama dari"
+                    role="Putra Kedua dari"
                     parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
                     photo="/3x4danang.jpeg"
                     delay={0}
