@@ -8,9 +8,10 @@ interface ProfileCardProps {
     photo: string;
     delay: number;
     direction: 'left' | 'right';
+    bgPosition?: string;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction }) => (
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction, bgPosition = 'center top' }) => (
     <motion.div
         initial={{ opacity: 0, x: direction === 'left' ? -40 : 40 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -27,8 +28,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, d
             {/* Photo */}
             <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10">
                 <div
-                    className="w-full h-full bg-cover bg-top transition-transform duration-500 hover:scale-110"
-                    style={{ backgroundImage: `url('${photo}')` }}
+                    className="w-full h-full bg-cover transition-transform duration-500 hover:scale-110"
+                    style={{ backgroundImage: `url('${photo}')`, backgroundPosition: bgPosition }}
                 />
             </div>
         </div>
@@ -83,9 +84,10 @@ export const GroomBride: React.FC = () => {
                     name="Nariswara Danang Prasetya Aji"
                     role="Putra Pertama dari"
                     parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
-                    photo="/4x6danang.jpeg"
+                    photo="/3x4danang.jpeg"
                     delay={0}
                     direction="left"
+                    bgPosition="top center"
                 />
 
                 {/* Elegant Ampersand Divider */}
@@ -108,9 +110,10 @@ export const GroomBride: React.FC = () => {
                     name="Eva Kurnia Damayanti"
                     role="Putri Pertama dari"
                     parents="Bapak Walurat & Ibu Sri Wahyuni"
-                    photo="/4x6eva.jpeg"
+                    photo="/3x4eva.jpeg"
                     delay={0.1}
                     direction="right"
+                    bgPosition="center 10%"
                 />
             </div>
         </section>
