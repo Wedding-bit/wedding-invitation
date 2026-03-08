@@ -26,48 +26,48 @@ export const DigitalEnvelope: React.FC = () => {
                 </p>
 
                 <div className="space-y-4">
-                    {/* Bank BCA */}
+                    {/* Bank BRI Danang */}
                     <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-2 opacity-5 pointer-events-none transform translate-x-2 -translate-y-2">
                             <span className="material-symbols-outlined text-8xl">account_balance</span>
                         </div>
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">BCA</h4>
-                            <p className="text-2xl font-mono text-primary tracking-widest mb-1">1234567890</p>
-                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Danang Prasetya</p>
+                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">BRI</h4>
+                            <p className="text-2xl font-mono text-primary tracking-widest mb-1">209601007437534</p>
+                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Danang</p>
 
                             <button
-                                onClick={() => handleCopy('1234567890', 'BCA')}
+                                onClick={() => handleCopy('209601007437534', 'BRI_DANANG')}
                                 className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-6 py-2 rounded-full text-xs font-bold transition-colors w-full justify-center"
                             >
                                 <span className="material-symbols-outlined text-sm">
-                                    {copiedBank === 'BCA' ? 'check_circle' : 'content_copy'}
+                                    {copiedBank === 'BRI_DANANG' ? 'check_circle' : 'content_copy'}
                                 </span>
-                                {copiedBank === 'BCA' ? 'Berhasil Disalin!' : 'Salin No. Rekening'}
+                                {copiedBank === 'BRI_DANANG' ? 'Berhasil Disalin!' : 'Salin No. Rekening'}
                             </button>
                         </div>
                     </div>
 
-                    {/* E-Wallet / Dana */}
+                    {/* Bank BRI Eva */}
                     <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-2 opacity-5 pointer-events-none transform translate-x-2 -translate-y-2">
-                            <span className="material-symbols-outlined text-8xl">account_balance_wallet</span>
+                            <span className="material-symbols-outlined text-8xl">account_balance</span>
                         </div>
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">DANA / OVO</h4>
-                            <p className="text-2xl font-mono text-primary tracking-widest mb-1">08123456789</p>
-                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Eva Kurnia</p>
+                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">BRI</h4>
+                            <p className="text-2xl font-mono text-primary tracking-widest mb-1">602501008550532</p>
+                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Eva</p>
 
                             <button
-                                onClick={() => handleCopy('08123456789', 'DANA')}
+                                onClick={() => handleCopy('602501008550532', 'BRI_EVA')}
                                 className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-6 py-2 rounded-full text-xs font-bold transition-colors w-full justify-center"
                             >
                                 <span className="material-symbols-outlined text-sm">
-                                    {copiedBank === 'DANA' ? 'check_circle' : 'content_copy'}
+                                    {copiedBank === 'BRI_EVA' ? 'check_circle' : 'content_copy'}
                                 </span>
-                                {copiedBank === 'DANA' ? 'Berhasil Disalin!' : 'Salin No. E-Wallet'}
+                                {copiedBank === 'BRI_EVA' ? 'Berhasil Disalin!' : 'Salin No. Rekening'}
                             </button>
                         </div>
                     </div>
