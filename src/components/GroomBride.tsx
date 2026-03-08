@@ -26,9 +26,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, d
             {/* Inner ring */}
             <div className="absolute inset-1.5 rounded-full border border-primary/20" />
             {/* Photo */}
-            <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10">
+            <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10 bg-gradient-to-t from-pastel-blue/30 to-white/10">
                 <div
-                    className="w-full h-full bg-cover transition-transform duration-500 hover:scale-110 grayscale"
+                    className="w-full h-full bg-cover transition-transform duration-500 hover:scale-110"
                     style={{ backgroundImage: `url('${photo}')`, backgroundPosition: bgPosition }}
                 />
             </div>
@@ -84,10 +84,10 @@ export const GroomBride: React.FC = () => {
                     name="Nariswara Danang Prasetya Aji"
                     role="Putra Kedua dari"
                     parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
-                    photo="/3x4danang.jpeg"
+                    photo="/3x4danang-removebg-preview.png"
                     delay={0}
                     direction="left"
-                    bgPosition="top center"
+                    bgPosition="bottom center"
                 />
 
                 {/* Elegant Ampersand Divider */}
@@ -110,10 +110,10 @@ export const GroomBride: React.FC = () => {
                     name="Eva Kurnia Damayanti"
                     role="Putri Pertama dari"
                     parents="Bapak Walurat & Ibu Sri Wahyuni"
-                    photo="/3x4eva.jpeg"
+                    photo="/3x4eva-removebg-preview.png"
                     delay={0.1}
                     direction="right"
-                    bgPosition="center 10%"
+                    bgPosition="bottom center"
                 />
             </div>
         </section>
