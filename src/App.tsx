@@ -7,6 +7,8 @@ import { Gallery } from './components/Gallery';
 import { DigitalEnvelope } from './components/DigitalEnvelope';
 import { RSVP } from './components/RSVP';
 import { FloatingAudioPlayer } from './components/FloatingAudioPlayer';
+import { SectionDivider } from './components/SectionDivider';
+import { Footer } from './components/Footer';
 
 function App() {
   const [isOpened, setIsOpened] = useState(false);
@@ -65,30 +67,35 @@ function App() {
           <Hero />
         </div>
 
+        <SectionDivider variant="floral" />
+
         <div id="mempelai">
           <GroomBride />
         </div>
+
+        <SectionDivider variant="gold-line" />
 
         <div id="acara">
           <EventDetails />
         </div>
 
+        <SectionDivider variant="floral" />
+
         <Gallery />
+
+        <SectionDivider variant="gold-line" />
+
         <DigitalEnvelope />
+
+        <SectionDivider variant="floral" />
 
         <div id="ucapan">
           <RSVP />
         </div>
 
-        {/* Closing Section */}
-        <section className="px-8 py-16 text-center bg-primary/5 dark:bg-primary/10 mb-20">
-          <p className="text-sm text-slate-600 dark:text-slate-300 italic mb-8 max-w-xs mx-auto">
-            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kedua mempelai.
-          </p>
-          <p className="text-xs tracking-widest text-primary uppercase font-bold">Atas Kehadirannya Kami Ucapkan</p>
-          <h2 className="font-script text-6xl text-primary mt-6 mb-4">Terima Kasih</h2>
-          <p className="font-serif text-xl tracking-wide text-navy-custom dark:text-white">Danang & Eva</p>
-        </section>
+        <div className="mb-20">
+          <Footer />
+        </div>
       </main>
 
       {/* Footer Navigation */}
@@ -105,8 +112,8 @@ function App() {
               href={`#${item.id}`}
               onClick={(e) => scrollToSection(e, item.id)}
               className={`flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all ${activeSection === item.id
-                  ? 'text-primary bg-primary/10 dark:bg-primary/20 scale-110'
-                  : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
+                ? 'text-primary bg-primary/10 dark:bg-primary/20 scale-110'
+                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
                 }`}
             >
               <span className={`material-symbols-outlined ${activeSection === item.id ? 'fill' : ''}`} style={activeSection === item.id ? { fontVariationSettings: "'FILL' 1" } : {}}>

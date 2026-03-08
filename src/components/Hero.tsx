@@ -1,14 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const Hero: React.FC = () => {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start end', 'end start'],
+    });
+    const photoY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
+    const textOpacity = useTransform(scrollYProgress, [0.6, 0.9], [1, 0]);
+
     return (
-        <div className="relative min-h-[90vh] flex flex-col items-center justify-center py-12 px-6">
+        <div ref={sectionRef} className="relative min-h-[90vh] flex flex-col items-center justify-center py-12 px-6">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
+                style={{ opacity: textOpacity }}
                 className="w-full max-w-md mx-auto relative"
             >
                 <div className="text-center mb-8">
@@ -29,10 +38,11 @@ export const Hero: React.FC = () => {
 
                 <div className="px-8 py-4 relative z-10">
                     <div className="relative p-2 rounded-t-full border-2 border-primary/20 bg-pastel-blue/30 overflow-hidden shadow-2xl">
-                        <div
+                        <motion.div
                             className="aspect-[4/5] rounded-t-full bg-cover bg-center overflow-hidden grayscale-[10%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
                             style={{
-                                backgroundImage: "url('/master-photo.jpg')"
+                                backgroundImage: "url('/master-photo.jpg')",
+                                y: photoY,
                             }}
                         />
 
