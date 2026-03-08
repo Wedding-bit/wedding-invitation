@@ -113,7 +113,7 @@ export const EventDetails: React.FC = () => {
                     {/* Mini Map Preview */}
                     <div className="mt-6 relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8!2d111.3414!3d-6.7214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDMnMTcuMCJTIDExMcKwMjAnMjkuMCJF!5e0!3m2!1sid!2sid!4v1700000000000"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8!2d111.2606163!3d-6.7111921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDInNDAuMyJTIDExMcKwMTUnNDcuNSJF!5e0!3m2!1sid!2sid!4v1700000000000"
                             width="100%"
                             height="150"
                             style={{ border: 0 }}
@@ -131,7 +131,7 @@ export const EventDetails: React.FC = () => {
                     </div>
 
                     <a
-                        href="https://maps.google.com/?q=-6.7214,111.3414"
+                        href="https://www.google.com/maps/place/6%C2%B042'40.3%22S+111%C2%B015'47.5%22E/@-6.7111921,111.2606163,17z"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center w-full gap-2 bg-slate-900 dark:bg-primary hover:bg-slate-800 hover:dark:bg-primary/90 text-white px-6 py-4 rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] mt-3"
