@@ -28,7 +28,7 @@ export const GroomBride: React.FC = () => {
                     className="text-center group relative z-10"
                 >
                     <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/master-photo.jpg')", backgroundPosition: "top center" }} />
+                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/4x6danang.jpeg')", backgroundPosition: "top center" }} />
                     </div>
                     <h3 className="font-serif text-3xl font-bold text-navy-custom dark:text-white mb-2 group-hover:text-primary transition-colors">
                         Nariswara Danang Prasetya Aji
@@ -62,7 +62,7 @@ export const GroomBride: React.FC = () => {
                     className="text-center group relative z-10"
                 >
                     <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-white shadow-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
-                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/master-photo.jpg')", backgroundPosition: "center center" }} />
+                        <div className="w-full h-full bg-slate-200 bg-cover" style={{ backgroundImage: "url('/4x6eva.jpeg')", backgroundPosition: "top center" }} />
                     </div>
                     <h3 className="font-serif text-3xl font-bold text-navy-custom dark:text-white mb-2 group-hover:text-primary transition-colors">
                         Eva Kurnia Damayanti
