@@ -9,9 +9,10 @@ interface ProfileCardProps {
     delay: number;
     direction: 'left' | 'right';
     bgPosition?: string;
+    bgSize?: string;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction, bgPosition = 'center top' }) => (
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction, bgPosition = 'top center', bgSize = 'cover' }) => (
     <motion.div
         initial={{ opacity: 0, x: direction === 'left' ? -40 : 40 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -28,8 +29,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, d
             {/* Photo */}
             <div className="absolute inset-3 rounded-full overflow-hidden shadow-lg shadow-primary/10 bg-slate-50 dark:bg-slate-800 bg-gradient-to-t from-pastel-blue/20 to-white/50">
                 <div
-                    className="w-full h-full bg-[length:auto_90%] bg-no-repeat transition-transform duration-500 hover:scale-110"
-                    style={{ backgroundImage: `url('${photo}')`, backgroundPosition: bgPosition }}
+                    className="w-full h-full bg-no-repeat transition-transform duration-500 hover:scale-110"
+                    style={{ backgroundImage: `url('${photo}')`, backgroundPosition: bgPosition, backgroundSize: bgSize }}
                 />
             </div>
         </div>
@@ -87,7 +88,7 @@ export const GroomBride: React.FC = () => {
                     photo="/3x4danang-removebg-preview.png"
                     delay={0}
                     direction="left"
-                    bgPosition="bottom center"
+                    bgPosition="top center"
                 />
 
                 {/* Elegant Ampersand Divider */}
@@ -113,7 +114,8 @@ export const GroomBride: React.FC = () => {
                     photo="/3x4eva-removebg-preview.png"
                     delay={0.1}
                     direction="right"
-                    bgPosition="bottom center"
+                    bgPosition="top center"
+                    bgSize="80%"
                 />
             </div>
         </section>
