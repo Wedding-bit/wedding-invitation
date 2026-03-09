@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
                     </p>
 
                     <a
-                        href="https://api.whatsapp.com/send?text=Merupakan%20suatu%20kehormatan%20dan%20kebahagiaan%20bagi%20kami%20apabila%20Bapak%2FIbu%2FSaudara%2Fi%20berkenan%20hadir%20di%20acara%20pernikahan%20kami.%20%0A%0ABuka%20undangan%20digital%20kami%20di%3A%0Ahttps%3A%2F%2Fwedinginvit.netlify.app%20%0A%0ATerima%20kasih%20atas%20doa%20restu%20Anda.%0A%0A-%20Danang%20%26%20Eva"
+                        href="https://api.whatsapp.com/send?text=Bismillahirrahmanirrahim%20%0AAssalamualaikum%20Wr.%20Wb.%20%0A%0ATanpa%20mengurangi%20rasa%20hormat%2C%20perkenankan%20kami%20mengundang%20Bapak%2FIbu%2FSaudara%2Fi%20untuk%20hadir%20dan%20memberikan%20doa%20restu%20pada%20acara%20pernikahan%20kami%3A%0A%0A%2ADanang%20%26%20Eva%2A%0A%F0%9F%93%85%2029%20Maret%202026%0A%0AInfo%20lengkap%20acara%20dan%20lokasi%20bisa%20dilihat%20pada%20undangan%20digital%20kami%20berikut%3A%0Ahttps%3A%2F%2Fwedinginvit.netlify.app%20%0A%0AMerupakan%20suatu%20kehormatan%20dan%20kebahagiaan%20apabila%20Anda%20berkenan%20hadir.%20%0A%0AWassalamualaikum%20Wr.%20Wb."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-full bg-green-500/10 hover:bg-green-500/20 text-green-500 border border-green-500/30 transition-all text-sm font-semibold mx-auto"

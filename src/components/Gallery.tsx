@@ -3,46 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const photos = [
     {
-        src: '/master-photo.jpg',
+        src: '/photo-1.png',
         alt: 'Momen kebersamaan kami',
         span: 'col-span-2 row-span-2',
         position: 'center top',
         filter: 'none',
     },
     {
-        src: '/master-photo.jpg',
+        src: '/photo-2.png',
         alt: 'Senyum bahagia',
         span: '',
         position: 'right center',
         filter: 'sepia(20%) saturate(1.2)',
-    },
-    {
-        src: '/master-photo.jpg',
-        alt: 'Kenangan indah',
-        span: '',
-        position: 'left top',
-        filter: 'brightness(1.1) contrast(1.05)',
-    },
-    {
-        src: '/master-photo.jpg',
-        alt: 'Bersama selamanya',
-        span: 'col-span-2',
-        position: 'center 30%',
-        filter: 'saturate(0.8) brightness(0.95)',
-    },
-    {
-        src: '/master-photo.jpg',
-        alt: 'Cinta abadi',
-        span: '',
-        position: 'center bottom',
-        filter: 'hue-rotate(10deg) saturate(1.1)',
-    },
-    {
-        src: '/master-photo.jpg',
-        alt: 'Kebahagiaan kita',
-        span: 'col-span-2 row-span-2',
-        position: '40% center',
-        filter: 'sepia(10%) brightness(1.05)',
     },
 ];
 
@@ -63,8 +35,8 @@ export const Gallery: React.FC = () => {
                 <p className="font-serif italic text-sm mt-4 text-slate-500">Kisah cinta yang terabadikan</p>
             </motion.div>
 
-            {/* Masonry Grid */}
-            <div className="grid grid-cols-3 gap-2 max-w-lg mx-auto auto-rows-[110px] md:auto-rows-[140px]">
+            {/* Simple Grid Array for 2 Photos */}
+            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
                 {photos.map((photo, index) => (
                     <motion.div
                         key={index}
@@ -72,7 +44,7 @@ export const Gallery: React.FC = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className={`overflow-hidden rounded-xl shadow-md cursor-pointer relative group ${photo.span}`}
+                        className={`overflow-hidden rounded-xl shadow-md cursor-pointer relative group aspect-[4/5]`}
                         onClick={() => setLightboxIndex(index)}
                     >
                         <div
