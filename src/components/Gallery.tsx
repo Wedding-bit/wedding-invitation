@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const photos = [
     {
-        src: '/photo-1.png',
+        src: '/photo-1.webp',
         alt: 'Momen kebersamaan kami',
         span: 'col-span-2 row-span-2',
         position: 'center top',
         filter: 'none',
     },
     {
-        src: '/photo-2.png',
+        src: '/photo-2.webp',
         alt: 'Senyum bahagia',
         span: '',
         position: 'right center',

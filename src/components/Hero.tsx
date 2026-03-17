@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
                         <motion.div
                             className="aspect-[4/5] rounded-t-full bg-cover bg-center overflow-hidden grayscale-[10%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
                             style={{
-                                backgroundImage: "url('/master-photo.jpg')",
+                                backgroundImage: "url('/master-photo.webp')",
                                 y: photoY,
                             }}
                         />

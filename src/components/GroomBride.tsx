@@ -97,7 +97,7 @@ export const GroomBride: React.FC = () => {
                     role="Putra Kedua dari"
                     parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
                     address="Ds. Sugihmanik, Kec. Tanggungharjo - Grobogan"
-                    photo="/3x4danang-removebg-preview.png"
+                    photo="/3x4danang-removebg-preview.webp"
                     delay={0}
                     direction="left"
                     bgPosition="top center"
@@ -124,7 +124,7 @@ export const GroomBride: React.FC = () => {
                     role="Putri Pertama dari"
                     parents="Bapak Walurat & Ibu Sri Wahyuni"
                     address="Ds. Mojowarno, Kec. Kaliori – Rembang"
-                    photo="/3x4eva-removebg-preview.png"
+                    photo="/3x4eva-removebg-preview.webp"
                     delay={0.1}
                     direction="right"
                     bgPosition="top center"
