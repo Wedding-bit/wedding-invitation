@@ -22,7 +22,7 @@ export const DigitalEnvelope: React.FC = () => {
                 <span className="material-symbols-outlined text-primary text-4xl mb-4">volunteer_activism</span>
                 <h2 className="font-script text-4xl text-primary mb-4">Wedding Gift</h2>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 font-serif italic">
-                    Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
+                    Bagi Bapak/Ibu/Saudara/i yang ingin mengirimkan hadiah pernikahan dapat melalui nomor rekening di bawah ini.
                 </p>
 
                 <div className="space-y-4">
@@ -33,9 +33,9 @@ export const DigitalEnvelope: React.FC = () => {
                         </div>
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">BRI</h4>
+                            <img src="/bri-logo.png" alt="Bank BRI" className="h-6 mb-2" />
                             <p className="text-2xl font-mono text-primary tracking-widest mb-1">209601007437534</p>
-                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Danang</p>
+                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Nariswara Danang Prasetya Aji</p>
 
                             <button
                                 onClick={() => handleCopy('209601007437534', 'BRI_DANANG')}
@@ -56,9 +56,9 @@ export const DigitalEnvelope: React.FC = () => {
                         </div>
 
                         <div className="relative z-10 flex flex-col items-center">
-                            <h4 className="font-bold text-lg text-slate-800 dark:text-slate-200 mb-1">BRI</h4>
+                            <img src="/bri-logo.png" alt="Bank BRI" className="h-6 mb-2" />
                             <p className="text-2xl font-mono text-primary tracking-widest mb-1">602501008550532</p>
-                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Eva</p>
+                            <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">a.n Eva Kurnia Damayanti</p>
 
                             <button
                                 onClick={() => handleCopy('602501008550532', 'BRI_EVA')}

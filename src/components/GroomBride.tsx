@@ -5,6 +5,7 @@ interface ProfileCardProps {
     name: string;
     role: string;
     parents: string;
+    address?: string;
     photo: string;
     delay: number;
     direction: 'left' | 'right';
@@ -12,7 +13,7 @@ interface ProfileCardProps {
     bgSize?: string;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, delay, direction, bgPosition = 'top center', bgSize = 'cover' }) => (
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, address, photo, delay, direction, bgPosition = 'top center', bgSize = 'cover' }) => (
     <motion.div
         initial={{ opacity: 0, x: direction === 'left' ? -40 : 40 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -52,6 +53,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, parents, photo, d
         <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
             {parents}
         </p>
+
+        {/* Address */}
+        {address && (
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+                <span className="material-symbols-outlined text-primary text-sm">location_on</span>
+                <p className="text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
+                    {address}
+                </p>
+            </div>
+        )}
     </motion.div>
 );
 
@@ -82,9 +93,10 @@ export const GroomBride: React.FC = () => {
             <div className="max-w-sm mx-auto space-y-10">
                 {/* Groom */}
                 <ProfileCard
-                    name="Nariswara Danang Prasetya Aji"
+                    name="Nariswara Danang Prasetya Aji, S.T."
                     role="Putra Kedua dari"
                     parents="Bapak Sutrisno Budiyanto & Ibu Suwantini"
+                    address="Ds. Sugihmanik, Kec. Tanggungharjo - Grobogan"
                     photo="/3x4danang-removebg-preview.png"
                     delay={0}
                     direction="left"
@@ -108,9 +120,10 @@ export const GroomBride: React.FC = () => {
 
                 {/* Bride */}
                 <ProfileCard
-                    name="Eva Kurnia Damayanti"
+                    name="Eva Kurnia Damayanti, S.Pd."
                     role="Putri Pertama dari"
                     parents="Bapak Walurat & Ibu Sri Wahyuni"
+                    address="Ds. Mojowarno, Kec. Kaliori – Rembang"
                     photo="/3x4eva-removebg-preview.png"
                     delay={0.1}
                     direction="right"

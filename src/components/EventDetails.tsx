@@ -68,19 +68,56 @@ export const EventDetails: React.FC = () => {
                 </div>
             </motion.div>
 
-            {/* Event Card */}
+            {/* Akad Nikah Card */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="mx-auto max-w-sm w-full p-8 bg-white dark:bg-slate-800 rounded-[2rem] border border-primary/10 shadow-xl shadow-primary/5 relative overflow-hidden"
+                className="mx-auto max-w-sm w-full p-8 bg-white dark:bg-slate-800 rounded-[2rem] border border-primary/10 shadow-xl shadow-primary/5 relative overflow-hidden mb-6"
+            >
+                <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
+                    <span className="material-symbols-outlined text-9xl transform rotate-12">mosque</span>
+                </div>
+
+                <div className="relative z-10 text-center space-y-6">
+                    <div>
+                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pastel-blue/50 dark:bg-primary/20 mb-4">
+                            <span className="material-symbols-outlined text-primary">menu_book</span>
+                        </div>
+                        <h3 className="font-serif italic text-sm text-slate-500 dark:text-slate-400 mb-1">Akad Nikah</h3>
+                        <h4 className="font-serif text-2xl font-bold text-navy-custom dark:text-white">Minggu, 29 Maret 2026</h4>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4 relative">
+                        <div className="space-y-2 p-2 relative z-10">
+                            <span className="material-symbols-outlined text-primary text-xl">schedule</span>
+                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Waktu</p>
+                            <p className="text-sm font-bold text-slate-800 dark:text-slate-200">08.00 WIB</p>
+                        </div>
+                        <div className="absolute left-1/2 top-4 bottom-4 w-px bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2" />
+                        <div className="space-y-2 p-2 relative z-10">
+                            <span className="material-symbols-outlined text-primary text-xl">location_on</span>
+                            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Lokasi</p>
+                            <p className="text-sm font-bold leading-tight text-slate-800 dark:text-slate-200">Kaliori, Rembang</p>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            {/* Resepsi Pernikahan Card */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="mx-auto max-w-sm w-full p-8 bg-white dark:bg-slate-800 rounded-[2rem] border border-primary/10 shadow-xl shadow-primary/5 relative overflow-hidden mb-6"
             >
                 <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
                     <span className="material-symbols-outlined text-9xl transform rotate-12">calendar_month</span>
                 </div>
 
-                <div className="relative z-10 text-center space-y-8">
+                <div className="relative z-10 text-center space-y-6">
                     <div>
                         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pastel-blue/50 dark:bg-primary/20 mb-4">
                             <span className="material-symbols-outlined text-primary">event</span>
@@ -89,7 +126,7 @@ export const EventDetails: React.FC = () => {
                         <h4 className="font-serif text-2xl font-bold text-navy-custom dark:text-white mb-4">Minggu, 29 Maret 2026</h4>
 
                         <a
-                            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Danang+%26+Eva&dates=20260329T020000Z/20260329T060000Z&details=Merupakan+suatu+kehormatan+dan+kebahagiaan+bagi+kami+apabila+Bapak/Ibu/Saudara/i+berkenan+hadir.&location=Kaliori,+Rembang"
+                            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Danang+%26+Eva&dates=20260329T010000Z/20260329T060000Z&details=Merupakan+suatu+kehormatan+dan+kebahagiaan+bagi+kami+apabila+Bapak/Ibu/Saudara/i+berkenan+hadir.&location=Kaliori,+Rembang"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/30 text-primary dark:text-primary hover:bg-primary/10 transition-colors text-xs font-bold uppercase tracking-wider mx-auto"
@@ -103,7 +140,7 @@ export const EventDetails: React.FC = () => {
                         <div className="space-y-2 p-2 relative z-10">
                             <span className="material-symbols-outlined text-primary text-xl">schedule</span>
                             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Waktu</p>
-                            <p className="text-sm font-bold text-slate-800 dark:text-slate-200">Jam Bebas</p>
+                            <p className="text-sm font-bold text-slate-800 dark:text-slate-200">09.00 - Selesai</p>
                         </div>
                         <div className="absolute left-1/2 top-4 bottom-4 w-px bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2" />
                         <div className="space-y-2 p-2 relative z-10">
@@ -112,16 +149,30 @@ export const EventDetails: React.FC = () => {
                             <p className="text-sm font-bold leading-tight text-slate-800 dark:text-slate-200">Kaliori, Rembang</p>
                         </div>
                     </div>
+                </div>
+            </motion.div>
 
-                    <div className="pt-6 relative">
-                        <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            {/* Shared Location Details */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="mx-auto max-w-sm w-full p-8 bg-white dark:bg-slate-800 rounded-[2rem] border border-primary/10 shadow-xl shadow-primary/5 relative overflow-hidden"
+            >
+                <div className="relative z-10 text-center space-y-6">
+                    <div>
+                        <div className="flex items-center justify-center gap-1.5 mb-2">
+                            <span className="material-symbols-outlined text-primary text-lg">home</span>
+                            <p className="text-xs font-semibold text-primary uppercase tracking-wider">Kediaman Mempelai Wanita</p>
+                        </div>
                         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px] mx-auto">
                             Dk. Cering RT 02 / RW 01 Ds. Mojowarno <br /> Kec. Kaliori – Rembang
                         </p>
                     </div>
 
                     {/* Mini Map Preview */}
-                    <div className="mt-6 relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700">
+                    <div className="relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8!2d111.2606163!3d-6.7111921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDInNDAuMyJTIDExMcKwMTUnNDcuNSJF!5e0!3m2!1sid!2sid!4v1700000000000"
                             width="100%"
@@ -144,7 +195,7 @@ export const EventDetails: React.FC = () => {
                         href="https://www.google.com/maps/place/6%C2%B042'40.3%22S+111%C2%B015'47.5%22E/@-6.7111921,111.2606163,17z"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-full gap-2 bg-slate-900 dark:bg-primary hover:bg-slate-800 hover:dark:bg-primary/90 text-white px-6 py-4 rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98] mt-3"
+                        className="inline-flex items-center justify-center w-full gap-2 bg-slate-900 dark:bg-primary hover:bg-slate-800 hover:dark:bg-primary/90 text-white px-6 py-4 rounded-xl text-sm font-semibold transition-all shadow-lg hover:shadow-xl active:scale-[0.98]"
                     >
                         <span className="material-symbols-outlined text-lg">directions</span>
                         <span>Petunjuk Arah ke Lokasi</span>
